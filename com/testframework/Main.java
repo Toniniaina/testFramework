@@ -5,6 +5,7 @@ import framework.annotation.AnnotationReader;
 public class Main {
     
     public static void main(String[] args) {
+
         System.out.println("=== Démarrage de l'application ===\n");
         
         // Initialisation du système au démarrage (scan des URLs une seule fois)
@@ -32,5 +33,6 @@ public class Main {
     private static void testUrl(String url) {
         System.out.println("\nRecherche de l'URL: " + url);
         AnnotationReader.displayMappingForUrl(url);
+
     }
 }
