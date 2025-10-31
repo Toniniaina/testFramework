@@ -1,7 +1,8 @@
-package testFramework;
+package testFramework.com.testframework.controller;
 
+import framework.annotation.Controller;
 import framework.annotation.GetMapping;
-
+@Controller
 public class SimpleControllerWithoutClassAnnotation {
     
     @GetMapping("/simple")
