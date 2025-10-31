@@ -1,4 +1,4 @@
-package testFramework;
+package testFramework.com.testframework.util;
 
 public class ClassWithoutAnnotations {
     

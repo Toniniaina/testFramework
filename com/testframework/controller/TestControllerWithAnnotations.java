@@ -1,9 +1,9 @@
-package testFramework;
+package testFramework.com.testframework.controller;
 
 import framework.annotation.Controller;
 import framework.annotation.GetMapping;
 
-@Controller("testController")
+@Controller
 public class TestControllerWithAnnotations {
     
     @GetMapping("/test")

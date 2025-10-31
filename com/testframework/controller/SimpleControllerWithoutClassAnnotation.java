@@ -1,4 +1,4 @@
-package testFramework;
+package testFramework.com.testframework.controller;
 
 import framework.annotation.GetMapping;
 
