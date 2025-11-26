@@ -23,6 +23,9 @@ public class Main {
         testUrl("/users/create");
         testUrl("/admin/dashboard");
         testUrl("/admin/settings");
+            // Test same URL with GET and POST
+            testUrlWithMethod("/admin/echo", "GET");
+            testUrlWithMethod("/admin/echo", "POST");
         
         // Test avec une URL non existante
         testUrl("/nonexistent");
@@ -32,5 +35,19 @@ public class Main {
     private static void testUrl(String url) {
         System.out.println("\nRecherche de l'URL: " + url);
         AnnotationReader.displayMappingForUrl(url);
+    }
+
+    private static void testUrlWithMethod(String url, String method) {
+        System.out.println("\nRecherche de l'URL: " + url + " via " + method);
+        framework.utilitaire.MappingInfo info = AnnotationReader.findMappingByUrl(url, method);
+        if (info == null || !info.isFound()) {
+            if (info != null && info.isMethodNotAllowed()) {
+                System.out.println("Result: 405 Method Not Allowed. Allowed: " + info.getAllowedMethods());
+            } else {
+                System.out.println("Result: 404 Not Found");
+            }
+        } else {
+            System.out.println("Result: Found -> Controller=" + info.getClassName() + " method=" + info.getMethodName() + " httpMethod=" + info.getHttpMethod());
+        }
     }
 }
