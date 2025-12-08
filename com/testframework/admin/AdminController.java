@@ -2,6 +2,8 @@ package testFramework.com.testframework.admin;
 
 import framework.annotation.Controller;
 import framework.annotation.GetMapping;
+import framework.annotation.PostMapping;
+import framework.annotation.RequestParam;
 import framework.utilitaire.ModelAndView;
 import testFramework.com.testframework.model.Employee;
 import java.util.Arrays;
@@ -40,6 +42,28 @@ public class AdminController {
         ModelAndView mv = new ModelAndView("employees");
         mv.addObject("employees", list)
           .addObject("title", "Liste des employés");
+        return mv;
+    }
+
+    @GetMapping("/admin/echo")
+    public ModelAndView echoForm() {
+        ModelAndView mv = new ModelAndView("echo");
+        mv.addObject("title", "Echo Form");
+        return mv;
+    }
+
+
+    @PostMapping("/admin/echo")
+    public ModelAndView echoPost(@RequestParam("msg") String message, @RequestParam(value = "count", required = false, defaultValue = "1") int count) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < Math.max(1, count); i++) {
+            if (i > 0) sb.append(" <br/>");
+                sb.append(message);
+        }
+        ModelAndView mv = new ModelAndView("admin");
+        mv.addObject("title", "Echo POST")
+            .addObject("message", sb.toString())
+            .addObject("count", count);
         return mv;
     }
 }
