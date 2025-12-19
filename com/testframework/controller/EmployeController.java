@@ -19,6 +19,8 @@ public class EmployeController {
 
     @PostMapping("/employe/save")
     public ModelAndView save(@ModelAttribute EmployeDTO employe) {
+        //Employee emp= new  Employee();
+        //emp.setNom(employe.getNom());
         System.out.println("Employé: " + employe.getNom());
         if (employe.getDept() != null) {
             System.out.println("Département: " + employe.getDept().getNomDept());
